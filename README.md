@@ -1,10 +1,15 @@
 # surround.vim
 
+[中文文档](https://github.com/Leiyi548/vim-surround/blob/master/README_CN.md) 
+[中文文档](./README_CN.md) 
+
 Surround.vim is all about "surroundings": parentheses, brackets, quotes,
-XML tags, and more.  The plugin provides mappings to easily delete,
+XML tags, and more. The plugin provides mappings to easily delete,
 change and add such surroundings in pairs.
 
-It's easiest to explain with examples.  Press `cs"'` inside
+**support number**
+
+It's easiest to explain with examples. Press `cs"'` inside
 
     "Hello world!"
 
@@ -53,8 +58,8 @@ visual mode) followed by `S<p class="important">`.
     </p>
 
 This plugin is very powerful for HTML and XML editing, a niche which
-currently seems underfilled in Vim land.  (As opposed to HTML/XML
-*inserting*, for which many plugins are available).  Adding, changing,
+currently seems underfilled in Vim land. (As opposed to HTML/XML
+_inserting_, for which many plugins are available). Adding, changing,
 and removing pairs of tags simultaneously is a breeze.
 
 The `.` command will work with `ds`, `cs`, and `yss` if you install
@@ -74,7 +79,7 @@ support:
 
 > How do I surround without adding a space?
 
-Only the opening brackets—`[`, `{`, and `(`—add a space.  Use a closing
+Only the opening brackets—`[`, `{`, and `(`—add a space. Use a closing
 bracket, or the `b` (`(`) and `B` (`{`) aliases.
 
 ## Contributing
@@ -84,15 +89,15 @@ See the contribution guidelines for
 
 ## Self-Promotion
 
-Like surround.vim?  Star the repository on
+Like surround.vim? Star the repository on
 [GitHub](https://github.com/tpope/vim-surround) and vote for it on
 [vim.org](https://www.vim.org/scripts/script.php?script_id=1697).
 
-Love surround.vim?  Follow [tpope](http://tpo.pe/) on
+Love surround.vim? Follow [tpope](http://tpo.pe/) on
 [GitHub](https://github.com/tpope) and
 [Twitter](http://twitter.com/tpope).
 
 ## License
 
-Copyright (c) Tim Pope.  Distributed under the same terms as Vim itself.
+Copyright (c) Tim Pope. Distributed under the same terms as Vim itself.
 See `:help license`.
