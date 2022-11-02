@@ -1,13 +1,22 @@
 # surround.vim
 
-[中文文档](https://github.com/Leiyi548/vim-surround/blob/master/README_CN.md) 
-[中文文档](./README_CN.md) 
+[中文文档](./README_CN.md)
 
 Surround.vim is all about "surroundings": parentheses, brackets, quotes,
 XML tags, and more. The plugin provides mappings to easily delete,
 change and add such surroundings in pairs.
 
 **support number**
+
+you can use `ysiw2"` to add two "
+
+helloworld
+
+```text
+""helloworld""
+```
+
+**other same**
 
 It's easiest to explain with examples. Press `cs"'` inside
 
