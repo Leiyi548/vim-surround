@@ -617,7 +617,7 @@ vnoremap <silent> <Plug>VgSurround :<C-U>call <SID>opfunc(visualmode(),visualmod
 inoremap <silent> <Plug>Isurround  <C-R>=<SID>insert()<CR>
 inoremap <silent> <Plug>ISurround  <C-R>=<SID>insert(1)<CR>
 
-if !exists("g:surround_no_mappings") || ! g:surround_no_mappings
+if !exists("g:surround_no_normal_mappings") && ! g:surround_no_normal_mappings
   nmap ds  <Plug>Dsurround
   nmap cs  <Plug>Csurround
   nmap cS  <Plug>CSurround
@@ -626,15 +626,19 @@ if !exists("g:surround_no_mappings") || ! g:surround_no_mappings
   nmap yss <Plug>Yssurround
   nmap ySs <Plug>YSsurround
   nmap ySS <Plug>YSsurround
+endif
+
+if !exists("g:surround_no_insert_mappings") && ! g:surround_no_insert_mappings
+  if !hasmapto("<Plug>Isurround","i") && "" == mapcheck("<C-S>","i")
+    imap    <C-S> <Plug>Isurround
+  endif
+  imap      <C-G>s <Plug>Isurround
+  imap      <C-G>S <Plug>ISurround
+endif
+
+if !exists("g:surround_no_visual_mappings") && !g:surround_no_visual_mappings
   xmap S   <Plug>VSurround
   xmap gS  <Plug>VgSurround
-  if !exists("g:surround_no_insert_mappings") || ! g:surround_no_insert_mappings
-    if !hasmapto("<Plug>Isurround","i") && "" == mapcheck("<C-S>","i")
-      imap    <C-S> <Plug>Isurround
-    endif
-    imap      <C-G>s <Plug>Isurround
-    imap      <C-G>S <Plug>ISurround
-  endif
 endif
 
 " vim:set ft=vim sw=2 sts=2 et:
