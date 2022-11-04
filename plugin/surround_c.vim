@@ -30,8 +30,10 @@ endf
 " visual mode add pairs
 " 思路，将字符串分为3个部分
 " 将2个括号插入
+" visual mode add pairs
 func! SurroundVaddPairs(left, right)
     let [c1, l1, c2, l2] = [col("'<"), line("'<"), col("'>"), line("'>")]
+    let c2 = &selection == "exclusive" ? c2 - 1 : c2
     let [content1, content2] = [getline(l1), getline(l2)]
     if s:isSelectLines()
         let c = s:getCol(l1, l2)
@@ -39,7 +41,7 @@ func! SurroundVaddPairs(left, right)
             let line = getline(num)
             call setline(num, s:getEmptyStr(&shiftwidth) . line)
         endfor
-        " echo [l1, l2]
+        echo [l1, l2]
         call appendbufline('%', l1 - 1, s:getEmptyStr(c) . a:left)
         call appendbufline('%', l2 + 1, s:getEmptyStr(c) . a:right)
     else 
@@ -47,11 +49,10 @@ func! SurroundVaddPairs(left, right)
             let content_1 = c1 - 2 >= 0 ? content1[: c1 - 2] : ''
             let content_2 = content1[c1 - 1: c2 - 1]
             let content_3 = content1[c2: ]
-            " echo [content_1,content_2,content_3]
             call setline(l1, content_1 . a:left . content_2 . a:right . content_3)
         else
             let content1_1 = c1 - 2 >= 0 ? content1[: c1 - 2] : ''
-            let content2_1 = c2 - 2 >= 0 ? content2[: c2 - 1] : ''
+            let content2_1 = c2 - 1 >= 0 ? content2[: c2 - 1] : ''
             let content1_2 = content1[c1 - 1:]
             let content2_2 = content2[c2:]
             call setline(l1, content1_1 . a:left . content1_2)
@@ -59,7 +60,6 @@ func! SurroundVaddPairs(left, right)
         endif
     endif
 endf
-
 " keybindin xnoremap <silent> '      :<c-u>call SurroundVaddPairs("'", "'")<cr>
 " :<c-u> 让vim看起来更像:这个行为
 " 如果你在visual mode你选中一些文本的时候会出现范围，而c-u刚好就能去除它
